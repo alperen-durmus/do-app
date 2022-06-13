@@ -15,7 +15,7 @@ const fetch = require('node-fetch');
 function App() {
   const { segment, microphoneState, stop} = useSpeechContext()
 
-  const [text, setText] = useState("")
+  const [text, setText] = useState()
   const [sentence, setSentence] = useState()
   const [translationActive, setTranslationActive] = useState(false);
 
@@ -25,6 +25,7 @@ function App() {
       setSentence(plainString);
       if(segment.isFinal) {
         setText(text + " " + sentence)
+
       }
 
     }
@@ -43,7 +44,7 @@ function App() {
       </Row>
       <Row>
         <Col span={24}>
-          <TextArea rows={10} value={text}/>
+          <TextArea rows={10} value={text} id="text" onChange={(value) => setText(value.target.value)}/>
         </Col>
       </Row>
       <Row justify="center" style={{marginTop:20}}>
