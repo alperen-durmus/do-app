@@ -61,3 +61,4 @@ Once the deploy is finish, you'll get an URL that you can share!
 ## Speechly CLI Tool 
 
 If you prefer the terminal, [Speechly’s Command Line Tool](https://docs.speechly.com/dev-tools/command-line-client/) will be your new best friend. Efficiently integrate Speechly to your development workflow while having access to any Speechly feature straight from your terminal. # do-app
+# do-app
