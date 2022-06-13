@@ -12,6 +12,9 @@ const keys = [
     "2a448a49e2msh3f9407b760b2370p10dcb9jsnd5ced2a24943",
     "8de98a5141mshc8d4d96bebafb63p132eaejsn1342a2175866",
     "236d0a9cafmsh4d5baf3caf790fap1ca65cjsn2ab6c637ad6f",
+    "54f6711ef4msh96f76849f558763p17f2f3jsn829ad50452f0",
+    "70d5a3538bmsh36f5bedb6ba3482p1c57e5jsn4b5b8432e22e",
+    "05d6ec3e50mshdbd9bba4d15cd0dp19a680jsn64c6429df3c0"
 ];
 
 function Translation({text}) {
@@ -19,9 +22,7 @@ function Translation({text}) {
         const [order, setOrder] = useState(0)
         const [key, setKey] = useState(keys[order])
 
-
         useEffect(() => {
-
             const encodedParams = new URLSearchParams();
             encodedParams.append("q", text);
             encodedParams.append("target", "tr");
@@ -43,7 +44,6 @@ function Translation({text}) {
             fetch(url, options)
             .then(res => res.json())
             .then(json => {
-                console.log(json)
                 if (json.message != undefined) {
                     setOrder(order + 1);
                     setKey(keys[order])
@@ -56,17 +56,13 @@ function Translation({text}) {
 
         }, [text, order])
       
-      
-        
 
     return (
-        <>
-             <Row style={{marginTop:20}}>
-                <Col span={24}>
-                    <TextArea rows={10} value={translation}/>
-                </Col>
-            </Row>
-        </>
+        <Row style={{marginTop:20}}>
+            <Col span={24}>
+                <TextArea rows={10} value={translation}/>
+            </Col>
+        </Row>
     )
 }
 

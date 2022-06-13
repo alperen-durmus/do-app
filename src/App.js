@@ -6,14 +6,11 @@ import {
   IntroPopup,
 } from "@speechly/react-ui";
 import { Button, Row, Col, Image } from 'antd';
-
-
 import Translation from "./components/Translation";
 import TextArea from "antd/lib/input/TextArea";
-
+import { ClearOutlined } from "@ant-design/icons";
 
 const fetch = require('node-fetch');
-
 
 function App() {
   const { segment, microphoneState, stop} = useSpeechContext()
@@ -22,20 +19,16 @@ function App() {
   const [sentence, setSentence] = useState()
   const [translationActive, setTranslationActive] = useState(false);
 
-
   useEffect(() => {
     if (segment) {
       const plainString = segment.words.filter(w => w.value).map(w => w.value).join(' ');
       setSentence(plainString);
-
       if(segment.isFinal) {
         setText(text + " " + sentence)
       }
 
     }
   }, [segment]);
-
-
 
   return (
     <div className="App">
@@ -46,7 +39,6 @@ function App() {
           src="https://i.im.ge/2022/06/14/rvdVWJ.jpg"
           preview={false}
         />
-
         </Col>
       </Row>
       <Row>
@@ -55,22 +47,25 @@ function App() {
         </Col>
       </Row>
       <Row justify="center" style={{marginTop:20}}>
-        <Col span={1}>
-          <Button onClick={() => setTranslationActive(true)} size="large" className="button">Çevir</Button>
+        <Col>
+          <Button onClick={() => setTranslationActive(true)} size="large" className="button">Translate</Button>
+        </Col>
+        <Col offset={2}></Col>
+        <Col>
+          <Button onClick={() => {
+              setTranslationActive(false)
+              setText("")
+            }} size="large" className="button" icon={<ClearOutlined />}>Clear</Button>
         </Col>
       </Row>
       
       {translationActive && <Translation text={text} />}
 
       <BigTranscript placement="bottom"/>
-      <PushToTalkButton placement="bottom" captureKey="" powerOn="auto" silenceToHangupTime="2000"/>
+      <PushToTalkButton placement="bottom" captureKey="" powerOn="auto" silenceToHangupTime=" "/>
       <IntroPopup />
     </div>
   );
 }
-
-
-
-
 
 export default App;
