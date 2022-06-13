@@ -24,8 +24,7 @@ function App() {
       const plainString = segment.words.filter(w => w.value).map(w => w.value).join(' ');
       setSentence(plainString);
       if(segment.isFinal) {
-        setText(text + " " + sentence)
-
+        setText((text ? text : "") + " " + sentence)
       }
 
     }
