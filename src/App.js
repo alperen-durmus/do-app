@@ -41,8 +41,8 @@ function App() {
         />
         </Col>
       </Row>
-      <Row>
-        <Col span={24}>
+      <Row justify="center">
+        <Col md={14} sm={22} xs={22}>
           <TextArea rows={10} value={text} id="text" onChange={(value) => setText(value.target.value)}/>
         </Col>
       </Row>
