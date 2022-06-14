@@ -58,8 +58,8 @@ function Translation({text}) {
       
 
     return (
-        <Row style={{marginTop:20}}>
-            <Col span={24}>
+        <Row style={{marginTop:20}} justify="center">
+            <Col md={14} sm={22} xs={22}>
                 <TextArea rows={10} value={translation}/>
             </Col>
         </Row>
